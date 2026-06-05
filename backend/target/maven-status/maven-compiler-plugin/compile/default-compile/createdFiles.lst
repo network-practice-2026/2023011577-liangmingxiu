@@ -1,0 +1,12 @@
+com\example\protocol\domain\FieldDefinitionEntity.class
+com\example\protocol\domain\ProtocolLayerEntity.class
+com\example\protocol\config\WebMvcConfig.class
+com\example\protocol\dto\ProtocolLayerDTO.class
+com\example\protocol\dto\HeaderFieldDTO.class
+com\example\protocol\ProtocolBackendApplication.class
+com\example\protocol\controller\ProtocolController.class
+com\example\protocol\controller\TestController.class
+com\example\protocol\mapper\TestMapper.class
+com\example\protocol\domain\TestEntity.class
+com\example\protocol\common\Result.class
+com\example\protocol\dto\ProtocolEncapsulationResponse.class
