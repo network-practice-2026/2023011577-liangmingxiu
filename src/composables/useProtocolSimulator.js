@@ -18,6 +18,16 @@ const protocolScenarios = {
     ],
     steps: [
       {
+        name: '初始状态',
+        description: '客户端准备访问 www.abc.com，当前 DNS 缓存为空，等待用户发起请求。',
+        path: [],
+        packet: { type: '', content: '', srcIp: '', dstIp: '' },
+        tables: {
+          dnsCache: [],
+          address: []
+        }
+      },
+      {
         name: '输入域名并检查本地缓存',
         description: '用户在浏览器输入 www.abc.com，客户端先查询本地 DNS 缓存，没有命中后准备向本地域名服务器发起查询。',
         path: ['client'],
@@ -74,6 +84,16 @@ const protocolScenarios = {
       ['switch', 'other']
     ],
     steps: [
+      {
+        name: '初始状态',
+        description: '源主机 H1 已知目标 IP 192.168.1.20，但 ARP 缓存表和交换机 MAC 表均为空。',
+        path: [],
+        packet: { type: '', content: '', srcMac: '', dstMac: '' },
+        tables: {
+          arp: [],
+          mac: []
+        }
+      },
       {
         name: '准备发送数据但缺少目标 MAC',
         description: '源主机 H1 已知目标 IP 为 192.168.1.20，但 ARP 缓存表为空，无法直接封装以太网帧。',

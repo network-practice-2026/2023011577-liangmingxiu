@@ -49,6 +49,22 @@ const arpTable = {
 
 const steps = [
   {
+    name: '初始状态 (t0)',
+    endpoint: '—',
+    protocol: '—',
+    castType: '—',
+    srcMac: '—',
+    dstMac: '—',
+    srcIp: '—',
+    dstIp: '—',
+    path: [],
+    switchAction: '交换机 S 交换表为空，尚未学习任何 MAC 地址。',
+    purpose: 'H1 在 t0 时刻使用浏览器访问 www.abc.com，此时 H1 的 ARP 表为空，交换机 S 的交换表为空，网络中尚未发生任何通信。',
+    frame: '—',
+    switchTable: switchTable.empty,
+    arpTable: arpTable.empty
+  },
+  {
     name: 'H1 查询本地域名服务器的 MAC 地址',
     endpoint: 'H1 -> 局域网广播',
     protocol: 'ARP',

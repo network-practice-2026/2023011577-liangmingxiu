@@ -789,22 +789,160 @@ tbody tr:last-child td {
 /* ── Knowledge Overview ── */
 .knowledge-overview {
   display: grid;
-  gap: 18px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
 }
 
-.overview-card {
+.overview-intro {
   background: #ffffff;
   border: 1px solid #d8e0ea;
   border-radius: 8px;
   box-shadow: 0 18px 42px rgba(31, 49, 70, 0.08);
-  padding: 18px;
+  padding: 22px;
 }
 
-.overview-card h3 {
+.overview-intro h3 {
+  font-size: 22px;
+  margin: 0 0 10px;
+}
+
+.overview-intro p {
   color: #435363;
-  font-size: 16px;
-  margin: 0 0 8px;
+  line-height: 1.85;
+  margin: 0;
+}
+
+.layer-cards {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+.layer-card {
+  background: #ffffff;
+  border: 1px solid #d8e0ea;
+  border-radius: 8px;
+  border-top: 4px solid #2f80ed;
+  box-shadow: 0 18px 42px rgba(31, 49, 70, 0.08);
+  padding: 18px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.layer-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 24px 48px rgba(31, 49, 70, 0.12);
+}
+
+.card-header {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.card-header h4 {
+  flex: 1;
+  font-size: 17px;
+  margin: 0;
+}
+
+.card-index {
+  align-items: center;
+  border-radius: 6px;
+  color: #ffffff;
+  display: flex;
+  font-size: 14px;
+  font-weight: 800;
+  height: 24px;
+  justify-content: center;
+  width: 24px;
+}
+
+.card-count {
+  color: #66788a;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.layer-card dl {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.layer-card dt {
+  color: #607080;
+  font-size: 12px;
+  font-weight: 760;
+}
+
+.layer-card dd {
+  color: #172026;
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 0 0 4px;
+}
+
+.overview-encap {
+  background: #ffffff;
+  border: 1px solid #d8e0ea;
+  border-radius: 8px;
+  box-shadow: 0 18px 42px rgba(31, 49, 70, 0.08);
+  padding: 22px;
+}
+
+.overview-encap h3 {
+  font-size: 18px;
+  margin: 0 0 16px;
+}
+
+.encap-flow {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.encap-step {
+  border: 2px solid #2f80ed;
+  border-radius: 8px;
+  padding: 10px 18px;
+  text-align: center;
+  min-width: 120px;
+}
+
+.encap-label {
+  border-radius: 6px;
+  color: #ffffff;
+  display: block;
+  font-size: 13px;
+  font-weight: 760;
+  margin-bottom: 6px;
+  padding: 4px 10px;
+}
+
+.encap-unit {
+  color: #435363;
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.encap-arrow {
+  color: #b5c3d1;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.encap-hint {
+  background: #f6f9fc;
+  border: 1px solid #dbe5ee;
+  border-radius: 8px;
+  color: #435363;
+  font-size: 13px;
+  line-height: 1.75;
+  margin: 0;
+  padding: 12px 16px;
 }
 
 /* Force graph canvas sizing */
