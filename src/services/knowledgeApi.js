@@ -155,11 +155,7 @@ async function requestJson(endpoint, options) {
 }
 
 export async function fetchKnowledgeLayers() {
-  try {
-    return await requestJson('/api/knowledge/layers')
-  } catch (error) {
-    return clone(readLocalStore().layers)
-  }
+  return clone(readLocalStore().layers)
 }
 
 export async function createKnowledgePoint(layerId, point) {

@@ -43,6 +43,10 @@ export function useKnowledgeSystem() {
       label: layer.name,
       type: 'layer',
       layerId: layer.id,
+      functionText: layer.functionText,
+      protocols: layer.protocols,
+      devices: layer.devices,
+      dataUnit: layer.dataUnit,
       x: 110 + index * 155,
       y: 150,
       color: layerColor(index)

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>网络实习项目 - 后端接口文档</title>
+<style>
+  :root {
+    --get: #2f80ed;
+    --post: #27ae60;
+    --put: #f2994a;
+    --delete: #eb5757;
+    --bg: #f6f9fc;
+    --card: #fff;
+    --text: #2c3e50;
+    --muted: #607080;
+    --border: #d8e0ea;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 32px 16px;
+  }
+  .container { max-width: 960px; margin: 0 auto; }
+  h1 {
+    font-size: 26px;
+    margin-bottom: 6px;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+  h2 {
+    font-size: 18px;
+    margin: 28px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+  }
+  .endpoint {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  }
+  .endpoint-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .method {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 4px;
+    min-width: 56px;
+    text-align: center;
+  }
+  .method.get { background: var(--get); }
+  .method.post { background: var(--post); }
+  .method.put { background: var(--put); }
+  .method.delete { background: var(--delete); }
+  .path {
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    word-break: break-all;
+  }
+  .desc {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 10px 0 4px;
+  }
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 12px;
+    overflow-x: auto;
+    margin-top: 4px;
+    line-height: 1.6;
+  }
+  .inline-code {
+    font-family: 'Fira Code', 'Consolas', monospace;
+    background: #edf2f7;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+  .status {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-left: 8px;
+  }
+  .status-200 { background: #e6f7ee; color: #1a7a42; }
+  .status-201 { background: #e6f7ee; color: #1a7a42; }
+  .status-204 { background: #edf2f7; color: #4a5568; }
+  .server-box {
+    background: #1e293b;
+    color: #e2e8f0;
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  .server-box span { color: #73d0ff; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>网络实习项目 — 后端接口文档</h1>
+<p class="subtitle">Spring Boot 后端 · 端口 8080 · 数据库 network_internship</p>
+
+<!-- ============ Server Info ============ -->
+<h2>服务信息</h2>
+<div class="server-box">
+  <span>Base URL</span>  http://localhost:8080<br>
+  <span>前端代理</span>  Vite proxy: /api → http://localhost:8080<br>
+  <span>数据库</span>&nbsp;&nbsp;  MySQL · network_internship · 127.0.0.1:3306
+</div>
+
+<!-- ============ Health ============ -->
+<h2>系统</h2>
+
+<div class="endpoint">
+  <div class="endpoint-header">
+    <span class="method get">GET</span>
+    <span class="path">/api/health</span>
+    <span class="status status-200">200</span>
+  </div>
+  <div class="desc">健康检查，确认服务正常运行。</div>
+  <div class="section-label">响应</div>
+  <pre>{"status": "ok"}</pre>
+</div>
+
+<div class="endpoint">
+  <div class="endpoint-header">
+    <span class="method get">GET</span>
+    <span class="path">/api/test/db</span>
+    <span class="status status-200">200</span>
+  </div>
+  <div class="desc">测试数据库连接，查询 test_table 返回所有记录。</div>
+</div>
+
+<!-- ============ Protocol ============ -->
+<h2>任务一/二 — 协议演示</h2>
+
+<div class="endpoint">
+  <div class="endpoint-header">
+    <span class="method get">GET</span>
+    <span class="path">/api/protocol/steps</span>
+    <span class="status status-200">200</span>
+  </div>
+  <div class="desc">获取 ARP 协议交互步骤列表。</div>
+</div>
+
+<div class="endpoint">
+  <div class="endpoint-header">
+    <span class="method get">GET</span>
+    <span class="path">/api/protocol/encapsulation</span>
+    <span class="status status-200">200</span>
+  </div>
+  <div class="desc">获取协议数据封装演示数据（四层头部字段及 payload）。</div>
+</div>
+
+<!-- ============ Knowledge System ============ -->
+<h2>任务三 — 知识体系 (CRUD)</h2>
+
+<div class="endpoint">
+  <div class="endpoint-header">
+    <span class="method get">GET</span>
+    <span class="path">/api/knowledge/layers</span>
+    <span class="status status-200">200</span>
+  </div>
+  <div class="desc">获取全部五层 TCP/IP 模型信息及各自的知识点列表。</div>
+  <div class="section-label">路径参数</div>
+  <div class="desc">无</div>
+  <div class="section-label">响应示例</div>
+  <pre>[
+  {
+    "id": "application",
+    "name": "应用层",
+    "functionText": "为用户应用程序提供网络服务...",
+    "protocols": ["HTTP", "DNS", "FTP", "SMTP"],
+    "devices": ["Web 服务器", "DNS 服务器"],
+    "dataUnit": "报文 Message",
+    "points": [
+      {
+        "id": "1",
+        "title": "HTTP",
+        "category": "协议",
+        "summary": "超文本传输协议...",
+        "detail": "HTTP 基于请求-响应模型..."
+      }
+    ]
+  }
+]</pre>
+</div>
+
+<div class="endpoint">
+  <div class="endpoint-header">
+    <span class="method post">POST</span>
+    <span class="path">/api/knowledge/layers/{layerId}/points</span>
+    <span class="status status-201">201</span>
+  </div>
+  <div class="desc">在指定层下新增一条知识点。</div>
+  <div class="section-label">路径参数</div>
+  <div class="desc"><span class="inline-code">layerId</span> — 层标识: application | transport | network | datalink | physical</div>
+  <div class="section-label">请求体</div>
+  <pre>{
+  "title": "HTTPS",
+  "category": "协议",
+  "summary": "安全的 HTTP 协议",
+  "detail": "HTTPS 在 HTTP 与 TCP 之间加入 TLS..."
+}</pre>
+</div>
+
+<div class="endpoint">
+  <div class="endpoint-header">
+    <span class="method put">PUT</span>
+    <span class="path">/api/knowledge/layers/{layerId}/points/{pointId}</span>
+    <span class="status status-200">200</span>
+  </div>
+  <div class="desc">修改指定知识点。</div>
+  <div class="section-label">路径参数</div>
+  <div class="desc">
+    <span class="inline-code">layerId</span> — 层标识<br>
+    <span class="inline-code">pointId</span> — 知识点 ID (数字)
+  </div>
+  <div class="section-label">请求体</div>
+  <pre>{
+  "title": "TCP",
+  "category": "协议",
+  "summary": "面向连接的可靠传输协议",
+  "detail": "TCP 通过确认、重传、滑动窗口等机制保证可靠性。"
+}</pre>
+</div>
+
+<div class="endpoint">
+  <div class="endpoint-header">
+    <span class="method delete">DELETE</span>
+    <span class="path">/api/knowledge/layers/{layerId}/points/{pointId}</span>
+    <span class="status status-204">204</span>
+  </div>
+  <div class="desc">删除指定知识点，成功返回 204 No Content。</div>
+  <div class="section-label">路径参数</div>
+  <div class="desc">
+    <span class="inline-code">layerId</span> — 层标识<br>
+    <span class="inline-code">pointId</span> — 知识点 ID (数字)
+  </div>
+</div>
+
+<!-- ============ Summary ============ -->
+<h2>接口总览</h2>
+
+<table style="width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+<thead>
+<tr style="background:#edf2f7;text-align:left;">
+  <th style="padding:10px 16px;font-size:12px;">方法</th>
+  <th style="padding:10px 16px;font-size:12px;">路径</th>
+  <th style="padding:10px 16px;font-size:12px;">说明</th>
+  <th style="padding:10px 16px;font-size:12px;">状态码</th>
+</tr>
+</thead>
+<tbody>
+<tr><td style="padding:8px 16px;"><span class="method get">GET</span></td><td style="padding:8px 16px;font-family:monospace;font-size:13px;">/api/health</td><td style="padding:8px 16px;font-size:13px;">健康检查</td><td style="padding:8px 16px;">200</td></tr>
+<tr><td style="padding:8px 16px;"><span class="method get">GET</span></td><td style="padding:8px 16px;font-family:monospace;font-size:13px;">/api/test/db</td><td style="padding:8px 16px;font-size:13px;">数据库连接测试</td><td style="padding:8px 16px;">200</td></tr>
+<tr><td style="padding:8px 16px;"><span class="method get">GET</span></td><td style="padding:8px 16px;font-family:monospace;font-size:13px;">/api/protocol/steps</td><td style="padding:8px 16px;font-size:13px;">ARP 协议步骤</td><td style="padding:8px 16px;">200</td></tr>
+<tr><td style="padding:8px 16px;"><span class="method get">GET</span></td><td style="padding:8px 16px;font-family:monospace;font-size:13px;">/api/protocol/encapsulation</td><td style="padding:8px 16px;font-size:13px;">协议封装数据</td><td style="padding:8px 16px;">200</td></tr>
+<tr><td style="padding:8px 16px;"><span class="method get">GET</span></td><td style="padding:8px 16px;font-family:monospace;font-size:13px;">/api/knowledge/layers</td><td style="padding:8px 16px;font-size:13px;">五层模型 + 知识点</td><td style="padding:8px 16px;">200</td></tr>
+<tr><td style="padding:8px 16px;"><span class="method post">POST</span></td><td style="padding:8px 16px;font-family:monospace;font-size:13px;">/api/knowledge/layers/{layerId}/points</td><td style="padding:8px 16px;font-size:13px;">新增知识点</td><td style="padding:8px 16px;">201</td></tr>
+<tr><td style="padding:8px 16px;"><span class="method put">PUT</span></td><td style="padding:8px 16px;font-family:monospace;font-size:13px;">/api/knowledge/layers/{layerId}/points/{pointId}</td><td style="padding:8px 16px;font-size:13px;">修改知识点</td><td style="padding:8px 16px;">200</td></tr>
+<tr><td style="padding:8px 16px;"><span class="method delete">DELETE</span></td><td style="padding:8px 16px;font-family:monospace;font-size:13px;">/api/knowledge/layers/{layerId}/points/{pointId}</td><td style="padding:8px 16px;font-size:13px;">删除知识点</td><td style="padding:8px 16px;">204</td></tr>
+</tbody>
+</table>
+
+<p style="text-align:center;color:var(--muted);font-size:12px;margin-top:28px;">
+  api-doc.html · 直接双击浏览器打开即可查看
+</p>
+
+</div>
+</body>
+</html>
