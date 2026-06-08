@@ -29,8 +29,6 @@
 
       <div v-if="loading" class="status-panel">正在加载知识体系数据...</div>
 
-      <div v-else-if="error" class="status-panel error">{{ error }}</div>
-
       <template v-else>
         <KnowledgeOverview
           v-if="activeTab === 'overview'"
@@ -94,7 +92,6 @@ const {
   totalPages,
   pagedPoints,
   loading,
-  error,
   graphNodes,
   graphLinks,
   selectedGraphNode,
