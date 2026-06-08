@@ -14,6 +14,7 @@ export function useKnowledgeSystem() {
   const keyword = ref('')
   const currentPage = ref(1)
   const loading = ref(false)
+  const error = ref(null)
   const selectedGraphNode = ref(null)
 
   const activeLayer = computed(() => layers.value.find((layer) => layer.id === activeTab.value))
@@ -72,10 +73,13 @@ export function useKnowledgeSystem() {
 
   async function loadLayers() {
     loading.value = true
+    error.value = null
     try {
       layers.value = await fetchKnowledgeLayers()
       activeTab.value = layers.value[0]?.id || 'application'
       selectedGraphNode.value = { id: 'root', label: '计算机网络', type: 'root' }
+    } catch (e) {
+      error.value = e.message || '无法加载知识体系数据，请确认数据库已启动'
     } finally {
       loading.value = false
     }
@@ -139,6 +143,7 @@ export function useKnowledgeSystem() {
     pagedPoints,
     filteredPoints,
     loading,
+    error,
     graphNodes,
     graphLinks,
     selectedGraphNode,
